@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Taverna dei Dadi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══ HEADER ══════════════════════════════════════════════════════════════ -->
+  <header>
+    <h1>La Taverna dei Dadi</h1>
+    <p class="subtitle">Il Destino si Forgia con un Lancio</p>
+  </header>
+
+  <!-- ══ NAV ═════════════════════════════════════════════════════════════════ -->
+  <nav>
+    <a href="#d6">🎲 D6</a>
+    <a href="#d6x2">🎲🎲 2×D6</a>
+    <a href="#d20">⚡ D20</a>
+    <a href="#multi">⚙ N×DS</a>
+    <a href="#choice">⚔ Scegli</a>
+  </nav>
+
+  <!-- ══ MAIN ════════════════════════════════════════════════════════════════ -->
+  <main>
+
+    <!-- ── 1) DADO D6 ────────────────────────────────────────────────────── -->
+    <section class="dice-section" id="d6">
+      <h2 class="section-title">Dado a 6 Facce</h2>
+      <p class="section-desc">Il dado del destino ordinario — sei possibilità, infiniti esiti</p>
+
+      <div class="ornament"><span class="ornament-icon">◆</span></div>
+
+      <div class="die-container">
+        <div class="die-face" id="d6-face">⚀</div>
+      </div>
+
+      <div class="result-area">
+        <div class="result-label">Risultato</div>
+        <div class="result-value" id="d6-result">–</div>
+        <div class="result-detail" id="d6-detail">Premi il pulsante per lanciare</div>
+      </div>
+
+      <div style="text-align:center">
+        <button class="roll-btn" id="d6-btn">
+          <span class="btn-icon">🎲</span> Lancia il Dado
+        </button>
+      </div>
+
+      <div class="history-panel">
+        <div class="history-title">Ultimi Lanci</div>
+        <div class="history-list" id="d6-history"></div>
+      </div>
+    </section>
+
+    <!-- ── 2) DUE D6 + SOMMA ─────────────────────────────────────────────── -->
+    <section class="dice-section" id="d6x2">
+      <h2 class="section-title">Due Dadi a 6 Facce</h2>
+      <p class="section-desc">Due sorti si intrecciano — la somma rivela il verdetto</p>
+
+      <div class="ornament"><span class="ornament-icon">◈</span></div>
+
+      <div class="die-container">
+        <div class="die-face" id="d6x2-face1">⚁</div>
+        <div class="die-face" id="d6x2-face2">⚄</div>
+      </div>
+
+      <div class="result-area">
+        <div class="result-label">Somma</div>
+        <div class="result-value" id="d6x2-sum">–</div>
+        <div class="result-detail" id="d6x2-detail">Lancia i dadi per scoprire la somma</div>
+      </div>
+
+      <div style="text-align:center">
+        <button class="roll-btn" id="d6x2-btn">
+          <span class="btn-icon">🎲🎲</span> Lancia Entrambi
+        </button>
+      </div>
+
+      <div class="history-panel">
+        <div class="history-title">Ultimi Lanci</div>
+        <div class="history-list" id="d6x2-history"></div>
+      </div>
+    </section>
+
+    <!-- ── 3) DADO D20 ───────────────────────────────────────────────────── -->
+    <section class="dice-section" id="d20">
+      <h2 class="section-title">Dado a 20 Facce</h2>
+      <p class="section-desc">L'icosedro degli eroi — il 20 è gloria, l'1 è rovina</p>
+
+      <div class="ornament"><span class="ornament-icon">⬡</span></div>
+
+      <div class="die-container">
+        <div class="die-face" id="d20-face" style="border-radius:50%;width:110px;height:110px;font-size:2.2rem">⬡</div>
+      </div>
+
+      <div class="result-area">
+        <div class="result-label">Risultato</div>
+        <div class="result-value" id="d20-result">–</div>
+        <div class="result-detail" id="d20-detail">Premi per tirare l'icosedro</div>
+      </div>
+
+      <div style="text-align:center">
+        <button class="roll-btn" id="d20-btn">
+          <span class="btn-icon">⚡</span> Tira il D20
+        </button>
+      </div>
+
+      <div class="history-panel">
+        <div class="history-title">Ultimi Lanci</div>
+        <div class="history-list" id="d20-history"></div>
+      </div>
+    </section>
+
+    <!-- ── 4) N DADI × S FACCE ───────────────────────────────────────────── -->
+    <section class="dice-section" id="multi">
+      <h2 class="section-title">N Dadi × S Facce</h2>
+      <p class="section-desc">Scegli quanti dadi e quante facce — il caos obbedisce</p>
+
+      <div class="ornament"><span class="ornament-icon">⚙</span></div>
+
+      <div class="input-group">
+        <span class="input-label">Numero dadi</span>
+        <input type="number" id="multi-n" value="3" min="1" max="20" />
+        <span class="input-label" style="margin:0 0.2rem">×</span>
+        <span class="input-label">Facce</span>
+        <input type="number" id="multi-s" value="6" min="2" max="100" />
+      </div>
+
+      <div class="multi-dice-grid" id="multi-grid">
+        <div style="color:var(--cream-dim);font-style:italic;font-size:.9rem;align-self:center">
+          Imposta i valori e lancia
+        </div>
+      </div>
+
+      <div class="total-banner">
+        <div class="total-label">Totale</div>
+        <div class="total-value" id="multi-total">–</div>
+        <div class="total-breakdown" id="multi-breakdown"> </div>
+      </div>
+
+      <div style="text-align:center">
+        <button class="roll-btn" id="multi-btn">
+          <span class="btn-icon">⚙</span> Lancia i Dadi
+        </button>
+      </div>
+
+      <div class="history-panel">
+        <div class="history-title">Totali Precedenti</div>
+        <div class="history-list" id="multi-history"></div>
+      </div>
+    </section>
+
+    <!-- ── 5) SCELTA DADO STANDARD ───────────────────────────────────────── -->
+    <section class="dice-section" id="choice">
+      <h2 class="section-title">Scegli il Tuo Dado</h2>
+      <p class="section-desc">Seleziona un dado standard dalla casella e sfida il fato</p>
+
+      <div class="ornament"><span class="ornament-icon">⚔</span></div>
+
+      <div id="choice-buttons" class="dice-selector"></div>
+
+      <div class="die-container">
+        <div class="die-face" id="choice-face" style="font-size:1.6rem">D6</div>
+      </div>
+
+      <div class="result-area">
+        <div class="result-label">Risultato — <span id="choice-die-label">D6</span></div>
+        <div class="result-value" id="choice-result">–</div>
+        <div class="result-detail" id="choice-detail">Seleziona un dado e lancia</div>
+      </div>
+
+      <div style="text-align:center">
+        <button class="roll-btn" id="choice-btn">
+          <span class="btn-icon">⚔</span> Lancia il Dado Scelto
+        </button>
+      </div>
+
+      <div class="history-panel">
+        <div class="history-title">Ultimi Lanci</div>
+        <div class="history-list" id="choice-history"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="flame-row"><span>🕯</span><span>🕯</span><span>🕯</span></div>
+    <p>«Il dado è tratto» — Giulio Cesare, 49 a.C.</p>
+    <p style="margin-top:.4rem;font-size:.75rem;opacity:.5">La Taverna dei Dadi · Fortuna et Fatum</p>
+  </footer>
+
+  <!-- ══ SCRIPTS ══════════════════════════════════════════════════════════════ -->
+  <script src="dice1.js"></script>
+  <script src="dice2.js"></script>
+  <script src="dice3.js"></script>
+  <script src="dice4.js"></script>
+  <script src="dice5.js"></script>
+
+</body>
+</html>
